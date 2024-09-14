@@ -11,7 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-
+import { ThemeButton } from "@/components/ThemeButton";
 const Navbar = () => {
   //   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,25 +20,28 @@ const Navbar = () => {
   //   };
 
   return (
-    <nav className="px-4 bg-secondary sticky backdrop-blur">
+    <nav className="px-4 bg-background/50 sticky top-0 z-10 backdrop-blur text-primary shadow-primary">
       <div className="max-w-7xl border-b border-b-black mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
             <Link href="/">Blogger</Link>
           </div>
           <div className="hidden md:flex md:items-center md:space-x-4">
-            <Link href="/about">About</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/about" className="hover:scale-105 hover:drop-shadow-md hover:font-semibold transition-transform duration-300">About</Link>
+            <Link href="/blog" className="hover:scale-105 hover:drop-shadow-md hover:font-semibold transition-transform duration-300">Blog</Link>
+            <Link href="/contact" className="hover:scale-105 hover:drop-shadow-md hover:font-semibold transition-transform duration-300">Contact</Link>
+            <ThemeButton />
             <div>
               <Button className="mx-1" variant="outline">
                 Login
               </Button>
-              <Button className="mx-1" variant="outline">
+              <Button className="mx-1" variant="primary">
                 Sign Up
               </Button>
             </div>
           </div>
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center gap-3 md:hidden">
+            <ThemeButton />
             <Sheet>
               <SheetTrigger>
                 <svg
@@ -61,15 +64,18 @@ const Navbar = () => {
                   <SheetTitle>Blogger</SheetTitle>
                   <SheetDescription>
                     <div className="flex flex-col items-end gap-3 px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                      <Link href="/about" className="mx-1">
+                      <Link href="/about" className="mx-1 hover:scale-105 hover:drop-shadow-md hover:font-semibold transition-transform duration-300">
                         About
                       </Link>
-                      <Link href="/contact" className="mx-1">
+                      <Link href="/contact" className="mx-1 hover:scale-105 hover:drop-shadow-md hover:font-semibold transition-transform duration-300">
                         Contact
+                      </Link>
+                      <Link href="/blog" className="mx-1 hover:scale-105 hover:drop-shadow-md hover:font-semibold transition-transform duration-300">
+                      Blog
                       </Link>
                       <div className="flex gap-3">
                         <Button className="mx-1 text-xs" variant="outline">Login</Button>
-                        <Button className="mx-1 text-xs" variant="outline">
+                        <Button className="mx-1 text-xs" >
                           Sign Up
                         </Button>
                       </div>
