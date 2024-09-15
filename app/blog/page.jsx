@@ -1,51 +1,61 @@
 import Link from "next/link";
-const blogs = [
-  {
-    id: 1,
-    title: "First Blog",
-    description: "This is the first blog description.",
-    slug: "first-blog",
-    author: "Author One",
-    publishedDate: "2024-09-01",
-    image: "https://images.pexels.com/photos/68507/spring-flowers-flowers-collage-floral-68507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  },
-  {
-    id: 2,
-    title: "Second Blog",
-    description: "This is the second blog description.",
-    slug: "second-blog",
-    author: "Author Two",
-    publishedDate: "2024-09-05",
-    image: "https://images.pexels.com/photos/68507/spring-flowers-flowers-collage-floral-68507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  },
-  {
-    id: 3,
-    title: "Third Blog",
-    description: "This is the third blog description.",
-    slug: "third-blog",
-    author: "Author Three",
-    publishedDate: "2024-09-10",
-    image: "https://images.pexels.com/photos/68507/spring-flowers-flowers-collage-floral-68507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  },
-  {
-    id: 4,
-    title: "Fourth Blog",
-    description: "This is the fourth blog description.",
-    slug: "fourth-blog",
-    author: "Author Four",
-    publishedDate: "2024-09-12",
-    image: "https://images.pexels.com/photos/68507/spring-flowers-flowers-collage-floral-68507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  },
-  {
-    id: 5,
-    title: "Fifth Blog",
-    description: "This is the fifth blog description.",
-    slug: "fifth-blog",
-    author: "Author Five",
-    publishedDate: "2024-09-14",
-    image: "https://images.pexels.com/photos/68507/spring-flowers-flowers-collage-floral-68507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  },
-];
+import fs from 'fs';
+import matter from "gray-matter";
+
+const directory = fs.readdirSync("content","utf-8");
+// console.log(directory);
+const blogs = directory.map(file => {
+  const fileContent = fs.readFileSync(`content/${file}`,"utf-8");
+  const {data} = matter(fileContent);
+  return data;
+})
+// const blogs = [
+//   {
+//     id: 1,
+//     title: "First Blog",
+//     description: "This is the first blog description.",
+//     slug: "first-blog",
+//     author: "Author One",
+//     publishedDate: "2024-09-01",
+//     image: "https://images.pexels.com/photos/68507/spring-flowers-flowers-collage-floral-68507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+//   },
+//   {
+//     id: 2,
+//     title: "Second Blog",
+//     description: "This is the second blog description.",
+//     slug: "second-blog",
+//     author: "Author Two",
+//     publishedDate: "2024-09-05",
+//     image: "https://images.pexels.com/photos/68507/spring-flowers-flowers-collage-floral-68507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+//   },
+//   {
+//     id: 3,
+//     title: "Third Blog",
+//     description: "This is the third blog description.",
+//     slug: "third-blog",
+//     author: "Author Three",
+//     publishedDate: "2024-09-10",
+//     image: "https://images.pexels.com/photos/68507/spring-flowers-flowers-collage-floral-68507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+//   },
+//   {
+//     id: 4,
+//     title: "Fourth Blog",
+//     description: "This is the fourth blog description.",
+//     slug: "fourth-blog",
+//     author: "Author Four",
+//     publishedDate: "2024-09-12",
+//     image: "https://images.pexels.com/photos/68507/spring-flowers-flowers-collage-floral-68507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+//   },
+//   {
+//     id: 5,
+//     title: "Fifth Blog",
+//     description: "This is the fifth blog description.",
+//     slug: "fifth-blog",
+//     author: "Author Five",
+//     publishedDate: "2024-09-14",
+//     image: "https://images.pexels.com/photos/68507/spring-flowers-flowers-collage-floral-68507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+//   },
+// ];
 
 const BlogPage = () => {
   return (
@@ -53,7 +63,7 @@ const BlogPage = () => {
       {blogs.map((blog) => (
         <div
           key={blog.id}
-          className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 w-80 cursor-pointer overflow-hidden"
+          className="bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 w-80 cursor-pointer overflow-hidden"
         >
           <img
             src={blog.image}

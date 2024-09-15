@@ -21,7 +21,7 @@ const Navbar = () => {
 
   return (
     <nav className="px-4 bg-background/50 sticky top-0 z-10 backdrop-blur text-primary shadow-primary">
-      <div className="max-w-7xl border-b border-b-black mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl border-b border-b-primary mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
             <Link href="/">Blogger</Link>
